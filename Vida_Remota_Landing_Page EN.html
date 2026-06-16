@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vida Remota — International Professional Positioning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D1B2A;--navy2:#142236;--navy3:#1C2F45;
+  --charcoal:#2C3E50;--slate:#445566;--muted:#7A8A99;
+  --border:#D8D4CE;--offwhite:#F7F5F1;--white:#FFFFFF;
+  --gold:#B8922A;--gold-l:#D4A843;
+  --text:#1A2533;--text2:#445566;
+  --sans:'Inter',system-ui,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
+.label{font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.display{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.1;color:var(--navy);font-weight:700}
+.display em{font-style:italic;font-weight:400}
+.headline{font-family:var(--serif);font-size:clamp(1.6rem,3.2vw,2.4rem);line-height:1.2;color:var(--navy);font-weight:700}
+.subline{font-size:1.0625rem;color:var(--text2);line-height:1.7;max-width:560px}
+.body-sm{font-size:.875rem;color:var(--text2);line-height:1.75}
+.caption{font-size:.8125rem;color:var(--muted);letter-spacing:.04em}
+.gold-rule{width:40px;height:2px;background:var(--gold);margin-bottom:1.25rem}
+.rule{border:none;border-top:1px solid var(--border);margin:0}
+.mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mt-4{margin-top:2rem}
+
+.btn{display:inline-block;font-family:var(--sans);font-size:.875rem;font-weight:600;letter-spacing:.03em;text-decoration:none;border-radius:2px;transition:all .18s;cursor:pointer;border:none}
+.btn-navy{background:var(--navy);color:var(--white);padding:.85rem 2.25rem}
+.btn-navy:hover{background:var(--navy3)}
+.btn-gold{background:var(--gold);color:var(--white);padding:.85rem 2.25rem}
+.btn-gold:hover{background:var(--gold-l)}
+.btn-outline{background:transparent;color:#fff;padding:.8rem 2rem;border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{background:rgba(255,255,255,.08)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);padding:.85rem 2rem;backdrop-filter:blur(8px)}
+.nav-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.brand{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--navy);text-decoration:none}
+.brand span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.8125rem;font-weight:500;color:var(--text2);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--navy)}
+@media(max-width:680px){.nav-links{display:none}}
+
+/* HERO */
+.hero{background:var(--navy);padding:7rem 2rem 5.5rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;border-radius:50%;border:1px solid rgba(184,146,42,.09);box-shadow:0 0 0 90px rgba(184,146,42,.035),0 0 0 180px rgba(184,146,42,.015)}
+.hero-in{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:5rem;align-items:center}
+@media(max-width:840px){.hero-in{grid-template-columns:1fr}}
+.hero .label{color:var(--gold-l);display:block;margin-bottom:1.2rem}
+.hero .display{color:#fff;margin-bottom:1.25rem}
+.hero .display em{color:var(--gold-l)}
+.hero .subline{color:rgba(255,255,255,.65);max-width:500px;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-note{font-size:.75rem;color:rgba(255,255,255,.3);margin-top:1rem;letter-spacing:.04em}
+.hero-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:1.75rem}
+.hc-label{font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l);margin-bottom:1.25rem}
+.hc-stat{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.hc-stat:last-child{border-bottom:none;padding-bottom:0}
+.hc-num{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+.hc-txt{font-size:.75rem;color:rgba(255,255,255,.42);line-height:1.5}
+@media(max-width:840px){.hero-card{display:none}}
+
+/* WHO */
+.who{padding:6rem 2rem;background:var(--white)}
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3.5rem}
+@media(max-width:740px){.who-grid{grid-template-columns:1fr;gap:2.5rem}}
+.pi{display:flex;gap:.875rem;align-items:flex-start;padding:.85rem 0;border-bottom:1px solid var(--border)}
+.pi:first-child{padding-top:0}
+.pi-icon{min-width:32px;height:32px;border-radius:2px;background:var(--offwhite);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--slate)}
+.pi strong{display:block;font-size:.875rem;font-weight:600;color:var(--navy);margin-bottom:.15rem}
+.pi span{font-size:.8125rem;color:var(--text2);line-height:1.55}
+.contrast-box{padding:1.875rem;background:var(--offwhite);border-left:3px solid var(--gold)}
+.contrast-label{font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.ci{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--border)}
+.ci:last-child{border-bottom:none}
+.ci-arr{color:var(--gold);font-weight:700;flex-shrink:0;font-size:.875rem;line-height:1.5}
+.ci p{font-size:.8125rem;color:var(--text2);line-height:1.6}
+
+/* PROBLEM */
+.problem{padding:6rem 2rem;background:var(--navy)}
+.problem .label{color:var(--gold-l)}
+.problem .headline{color:#fff}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem 4rem;margin-top:3.5rem}
+@media(max-width:740px){.prob-grid{grid-template-columns:1fr;gap:2rem}}
+.pb{border-top:1px solid rgba(184,146,42,.2);padding-top:1.5rem}
+.pb h3{font-size:.9375rem;font-weight:600;color:#fff;margin-bottom:.6rem}
+.pb p{font-size:.8125rem;color:rgba(255,255,255,.48);line-height:1.75}
+.prob-quote{background:rgba(184,146,42,.06);border:1px solid rgba(184,146,42,.15);padding:2rem 2.5rem;margin-top:3.5rem;max-width:680px}
+.prob-quote p{font-family:var(--serif);font-size:1.15rem;line-height:1.65;color:rgba(255,255,255,.85);font-style:italic}
+.prob-quote cite{display:block;font-size:.75rem;color:rgba(255,255,255,.28);font-style:normal;margin-top:.75rem;letter-spacing:.04em}
+
+/* PRODUCTOS */
+.productos{padding:6rem 2rem;background:var(--offwhite)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:0}
+@media(max-width:980px){.prod-grid{grid-template-columns:1fr}}
+.prod-card.entry{display:flex;flex-direction:column}
+.prod-card.entry .prod-list{flex-grow:1}
+.prod-card{background:var(--white);border:1px solid var(--border);padding:2.25rem 2rem;position:relative;transition:box-shadow .2s}
+.prod-card:hover{box-shadow:0 6px 28px rgba(13,27,42,.07)}
+.prod-card.featured{border-color:var(--navy);border-width:2px}
+.prod-nivel{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem}
+.prod-name{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--navy);margin-bottom:.15rem}
+.prod-sub{font-size:.75rem;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.25rem}
+.prod-desc{font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.5rem}
+.prod-list{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.75rem}
+.prod-list li{font-size:.8125rem;color:var(--text2);display:flex;align-items:flex-start;gap:.55rem;line-height:1.5}
+.prod-list li::before{content:'—';color:var(--gold);flex-shrink:0;font-weight:600}
+.prod-price{font-size:.8125rem;color:var(--muted);padding-top:1.25rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.prod-price strong{color:var(--navy);font-size:1.2rem}
+.prod-badge{position:absolute;top:-1px;right:1.5rem;background:var(--navy);color:#fff;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .75rem}
+.prod-nota{text-align:center;margin-top:2.5rem;padding:1.75rem 2rem;border:1px solid var(--border);background:var(--white)}
+
+/* DIFERENCIACION */
+.diff{padding:6rem 2rem;background:var(--white)}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem}
+@media(max-width:740px){.diff-grid{grid-template-columns:1fr;gap:2.5rem}}
+.diff-table{width:100%;border-collapse:collapse}
+.diff-table th{font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.55rem .9rem;text-align:left;border-bottom:2px solid var(--border)}
+.diff-table td{font-size:.8125rem;padding:.65rem .9rem;border-bottom:1px solid var(--border);color:var(--text2);line-height:1.5}
+.diff-table td:first-child{color:var(--navy);font-weight:500}
+.diff-table tr:last-child td{border-bottom:none}
+.diff-points{display:flex;flex-direction:column;gap:1.25rem}
+.dp{padding:1.25rem;border-left:2px solid var(--border);transition:border-color .2s}
+.dp:hover{border-left-color:var(--gold)}
+.dp h4{font-size:.9375rem;font-weight:600;color:var(--navy);margin-bottom:.3rem}
+.dp p{font-size:.8125rem;color:var(--text2);line-height:1.65}
+
+/* RESULTADOS */
+.resultados{padding:6rem 2rem;background:var(--offwhite)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
+.res-card{background:var(--white);border:1px solid var(--border);padding:1.875rem}
+.res-tipo{font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.res-title{font-family:var(--serif);font-size:1.05rem;color:var(--navy);line-height:1.4;margin-bottom:.8rem;font-weight:700}
+.res-body{font-size:.8125rem;color:var(--text2);line-height:1.75;margin-bottom:1.25rem}
+.res-meta{font-size:.75rem;color:var(--muted);padding-top:1rem;border-top:1px solid var(--border)}
+.res-meta strong{color:var(--navy)}
+.fundador-block{background:var(--navy);padding:2.75rem 3rem;margin-top:3rem;display:grid;grid-template-columns:1fr 220px;gap:3rem;align-items:center}
+@media(max-width:680px){.fundador-block{grid-template-columns:1fr;padding:2rem}}
+.fb-text .label{color:var(--gold-l);display:block;margin-bottom:.9rem}
+.fb-text h3{font-family:var(--serif);font-size:1.35rem;color:#fff;margin-bottom:.7rem;font-weight:700}
+.fb-text p{font-size:.875rem;color:rgba(255,255,255,.58);line-height:1.75}
+.fb-stats{display:flex;flex-direction:column;gap:.85rem}
+.fbs{border-top:1px solid rgba(255,255,255,.1);padding-top:.85rem}
+.fbs-num{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#fff}
+.fbs-lbl{font-size:.75rem;color:rgba(255,255,255,.38);margin-top:.12rem;line-height:1.4}
+
+/* CTA */
+.cta{padding:7rem 2rem;background:var(--navy);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:560px;height:560px;border-radius:50%;border:1px solid rgba(184,146,42,.07);box-shadow:0 0 0 100px rgba(184,146,42,.025)}
+.cta-in{position:relative;max-width:600px;margin:0 auto}
+.cta-in .label{color:var(--gold-l);display:block;margin-bottom:1.2rem}
+.cta-in .display{color:#fff;margin-bottom:1.25rem}
+.cta-in .subline{color:rgba(255,255,255,.58);margin:0 auto 2.5rem}
+.cta-btns{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.cta-nota{font-size:.75rem;color:rgba(255,255,255,.28);margin-top:.75rem;letter-spacing:.04em}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid rgba(255,255,255,.06);padding:2.25rem 2rem}
+.foot-in{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-brand{font-family:var(--serif);font-size:.9rem;color:rgba(255,255,255,.65)}
+.foot-brand span{color:var(--gold)}
+.foot-links{display:flex;gap:1.75rem}
+.foot-links a{font-size:.75rem;color:rgba(255,255,255,.28);text-decoration:none;transition:color .15s}
+.foot-links a:hover{color:rgba(255,255,255,.6)}
+.foot-legal{font-size:.6875rem;color:rgba(255,255,255,.18);width:100%;text-align:center;margin-top:.5rem;letter-spacing:.04em}
+
+.section-hdr{margin-bottom:3.5rem}
+.section-hdr.c{text-align:center}
+.section-hdr.c .gold-rule{margin-left:auto;margin-right:auto}
+.section-hdr.c .subline{margin:1rem auto 0}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a href="#" class="brand">Vida<span>Remota</span></a>
+    <div class="nav-links">
+      <a href="#productos">Products</a>
+      <a href="#diferencia">Why this works</a>
+      <a href="#resultados">Results</a>
+      <a href="#expediente" class="btn btn-navy" style="padding:.5rem 1.2rem;font-size:.8rem">Start here</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <span class="label">Vida Remota · International Professional Positioning</span>
+      <h1 class="display">
+        Your English is already<br>worth more than the<br>local market <em>recognizes.</em>
+      </h1>
+      <p class="subline">
+        A positioning system for bilingual LATAM professionals who want to enter the American remote job market, grow their income in USD, and build long-term options.
+      </p>
+      <div class="hero-btns">
+        <a href="#expediente" class="btn btn-gold">See The File →</a>
+        <a href="#productos" class="btn btn-outline">See all products</a>
+      </div>
+      <p class="hero-note">Professionals from DR, Colombia, Venezuela and LATAM · Contracts with American firms and teams · Documented</p>
+    </div>
+    <div class="hero-card">
+      <div class="hc-label">Verifiable operational track record</div>
+      <div class="hc-stat">
+        <div class="hc-num">3 amendments</div>
+        <div class="hc-txt">to a contract signed with the same client over 24 months — base income adjusted three times</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-num">2 active contracts</div>
+        <div class="hc-txt">simultaneously via Deel · firms in Texas and California</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-num">3 U.S. firms</div>
+        <div class="hc-txt">remote legal contracts across Dallas TX, Los Angeles CA, and Austin TX</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-num">1 replicated case</div>
+        <div class="hc-txt">same customer service profile · same firm · documented contract</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARA QUIÉN ════════════════════════════════════════════════════════════ -->
+<section class="who" id="quien">
+  <div class="wrap">
+    <div class="section-hdr">
+      <div class="gold-rule"></div>
+      <span class="label">Who this is for</span>
+      <h2 class="headline mt-1">The professional who already has<br>what the American remote market is looking for.</h2>
+      <p class="subline mt-1">Nobody just taught them how to present it in that context.</p>
+    </div>
+    <div class="who-grid">
+      <div>
+        <div class="pi">
+          <div class="pi-icon">EN</div>
+          <div><strong>English B2 or higher</strong><span>Written and functional for professional environments. Emails, calls, documentation. A perfect accent isn't required — written precision and a professional response capacity are.</span></div>
+        </div>
+        <div class="pi">
+          <div class="pi-icon">⚙</div>
+          <div><strong>Transferable operational experience</strong><span>BPO, customer service, administration, operations, healthcare, financial services, education. The American remote market hires functional competence, not local titles.</span></div>
+        </div>
+        <div class="pi">
+          <div class="pi-icon">📋</div>
+          <div><strong>Organization under pressure and volume</strong><span>Deadlines, multiple workflows, cross-team coordination. These are exactly the skills American remote teams need — they just need to be presented in the right language.</span></div>
+        </div>
+        <div class="pi">
+          <div class="pi-icon">🎯</div>
+          <div><strong>Long-term horizon</strong><span>You're not looking for a one-off project. You're looking to reposition yourself professionally, grow your income over time, and open options the local market can't offer you.</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="contrast-box">
+          <div class="contrast-label">What changes with the right positioning</div>
+          <div class="ci">
+            <span class="ci-arr">→</span>
+            <p><strong style="color:var(--navy)">From:</strong> "Bilingual agent, 3 years in a call center." <strong style="color:var(--navy)">To:</strong> "Bilingual Operations Specialist — 3+ years managing high-volume professional workflows in English and Spanish."</p>
+          </div>
+          <div class="ci">
+            <span class="ci-arr">→</span>
+            <p><strong style="color:var(--navy)">From:</strong> A local two-page CV in Spanish. <strong style="color:var(--navy)">To:</strong> An ATS-ready one-page CV in American English, oriented to the target role.</p>
+          </div>
+          <div class="ci">
+            <span class="ci-arr">→</span>
+            <p><strong style="color:var(--navy)">From:</strong> Not knowing how to explain the independent contracting setup. <strong style="color:var(--navy)">To:</strong> Explaining Deel, independent contractor status, and invoicing with professional fluency.</p>
+          </div>
+          <div class="ci">
+            <span class="ci-arr">→</span>
+            <p><strong style="color:var(--navy)">From:</strong> Applying and getting no response. <strong style="color:var(--navy)">To:</strong> Applying with the right message to the right firms and teams.</p>
+          </div>
+        </div>
+        <p class="caption mt-4" style="display:block;line-height:1.65">The difference between the professional who gets the interview and the one who doesn't is almost never competence. It's positioning clarity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule">
+
+<!-- ══ EL DIAGNÓSTICO ════════════════════════════════════════════════════════ -->
+<section class="problem" id="problema">
+  <div class="wrap">
+    <div class="section-hdr">
+      <div class="gold-rule"></div>
+      <span class="label" style="color:var(--gold-l)">The diagnosis</span>
+      <h2 class="headline mt-1">The problem isn't your ability.<br>It's how you're presenting it.</h2>
+    </div>
+    <div class="prob-grid">
+      <div class="pb">
+        <h3>It's not your English level</h3>
+        <p>Most professionals who arrive at this system already have English that's perfectly functional for the American remote market. The problem is they don't know how to demonstrate it in the right context — the CV, the interview, and the first contact with the employer.</p>
+      </div>
+      <div class="pb">
+        <h3>It's not the experience</h3>
+        <p>Three years in high-performance operations, coordinating multiple workflows in English and Spanish — that's exactly what American remote teams need. The problem is that the local CV doesn't translate that experience into the language those employers understand.</p>
+      </div>
+      <div class="pb">
+        <h3>It's not access</h3>
+        <p>LinkedIn, Indeed Remote, and direct contact with American firms and teams are available from Santo Domingo and Medellín today. The problem is not knowing what to look for, who to contact, and what message to open with.</p>
+      </div>
+      <div class="pb">
+        <h3>It's not confidence</h3>
+        <p>Most professionals with the right profile don't apply because of a lack of operational clarity, not a lack of confidence. They don't know if they qualify. Structural clarity solves that before any motivational talk does.</p>
+      </div>
+    </div>
+    <div class="prob-quote">
+      <p>"The American remote market doesn't value what your title says. It values what you can demonstrate you can do. The gap between your real capability and what you communicate professionally is the only obstacle this system is designed to close."</p>
+      <cite>— Lorenzo Amparo Ramirez · Operational experience in the American professional remote market since 2024</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOS PRODUCTOS ═════════════════════════════════════════════════════════ -->
+<section class="productos" id="productos">
+  <div class="wrap">
+    <div class="section-hdr c">
+      <div class="gold-rule"></div>
+      <span class="label">The products</span>
+      <h2 class="headline mt-1">Three levels. One process.</h2>
+      <p class="subline">Start at the level that matches where you are right now. The system moves with you.</p>
+    </div>
+
+    <div class="prod-grid">
+
+      <!-- DIAGNOSTIC -->
+      <div class="prod-card entry" id="diagnostico">
+        <div class="prod-nivel">Level 0 — Starting point</div>
+        <div class="prod-name">The Diagnostic</div>
+        <div class="prod-sub">Positioning Read</div>
+        <p class="prod-desc">For the professional who needs to know, before anything else, how the market is reading them today and what their real entry points are. Fill out a short form about your profile and experience — receive a direct report in 24–48 hours.</p>
+        <ul class="prod-list">
+          <li>How the remote market reads you today</li>
+          <li>3–4 strengths reframed in operational language</li>
+          <li>2–3 gaps or risks specific to your profile</li>
+          <li>2–3 recommended entry points, ranked by viability</li>
+          <li>The reframe — the single shift with the most impact on your case</li>
+          <li>PDF report, delivered by email</li>
+        </ul>
+        <div class="prod-price">
+          <span>Delivered in 24–48h</span>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <strong>$19 USD</strong>
+            <a href="#" class="btn btn-navy" style="padding:.55rem 1.25rem;font-size:.8125rem">Get my diagnostic →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- KIT -->
+      <div class="prod-card">
+        <div class="prod-nivel">Level 1 — Entry-point toolkit</div>
+        <div class="prod-name">Global Career Kit</div>
+        <div class="prod-sub">Positioning tools</div>
+        <p class="prod-desc">For the professional who wants to understand how the American remote market works and prepare independently. Not a course — a set of operational tools ready to use from day one.</p>
+        <ul class="prod-list">
+          <li>ATS-ready CV template in American English</li>
+          <li>Interview question bank with model answers</li>
+          <li>Applied remote operational vocabulary</li>
+          <li>LinkedIn optimization checklist</li>
+          <li>Remote market positioning guide</li>
+          <li>Framework for applying to American firms and teams</li>
+          <li>Guide to using Deel as an independent contractor</li>
+        </ul>
+        <div class="prod-price">
+          <span>Instant access</span>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <strong>$47 USD</strong>
+            <a href="#" class="btn btn-navy" style="padding:.55rem 1.25rem;font-size:.8125rem">Get the Kit →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- THE FILE -->
+      <div class="prod-card featured" id="expediente">
+        <div class="prod-badge">Core service</div>
+        <div class="prod-nivel">Level 2 — Personalized service</div>
+        <div class="prod-name">The File</div>
+        <div class="prod-sub">Personalized Professional Positioning</div>
+        <p class="prod-desc">The core service. Not CV help — it's building your professional file for the international remote market. Built entirely around your specific profile, your target role, and the context of American employers.</p>
+        <ul class="prod-list">
+          <li>CV rewritten in American English — editable DOCX + PDF</li>
+          <li>Personalized interview guide — 10 questions with exact answers for your profile</li>
+          <li>3 real curated positions for your role and experience</li>
+          <li>45-minute live session — review, role-play, action plan</li>
+          <li>Positioning analysis for the remote market</li>
+          <li>Refined professional narrative for LinkedIn and applications</li>
+          <li>Week 2 post-session follow-up included</li>
+        </ul>
+        <div class="prod-price">
+          <span>One-time investment</span>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <strong>$197 USD</strong>
+            <a href="#" class="btn btn-gold" style="padding:.55rem 1.25rem;font-size:.8125rem">Start here →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Note about Global Career program -->
+    <div class="prod-nota">
+      <p class="body-sm" style="max-width:600px;margin:0 auto;color:var(--text2);font-size:.875rem">
+        <strong style="color:var(--navy)">Global Career</strong> — the complete 6-module, 28-lesson system, with The Guild community and the path toward global mobility options — is in development and launching soon. The File clients will get priority access.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ POR QUÉ ESTO ══════════════════════════════════════════════════════════ -->
+<section class="diff" id="diferencia">
+  <div class="wrap">
+    <div class="section-hdr">
+      <div class="gold-rule"></div>
+      <span class="label">Why this works</span>
+      <h2 class="headline mt-1">Operational. Specific.<br>Built from the inside.</h2>
+      <p class="subline mt-1">This isn't career coaching. It isn't motivational content. It's a system built by someone who currently operates inside the market it teaches you to enter.</p>
+    </div>
+    <div class="diff-grid">
+      <div>
+        <table class="diff-table">
+          <thead>
+            <tr><th>What you're evaluating</th><th>Vida Remota</th><th>Typical alternatives</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>System foundation</td><td>Active, verifiable contracts</td><td style="color:var(--muted)">Past or theoretical experience</td></tr>
+            <tr><td>Specialization</td><td>Remote operations — administrative and legal</td><td style="color:var(--muted)">Generic remote work</td></tr>
+            <tr><td>Personalization</td><td>CV and guide built for your profile</td><td style="color:var(--muted)">Generic templates</td></tr>
+            <tr><td>Proof of replication</td><td>Documented case with the same profile</td><td style="color:var(--muted)">Unverified testimonials</td></tr>
+            <tr><td>Horizon</td><td>First contract → scale → mobility</td><td style="color:var(--muted)">Just "get a remote job"</td></tr>
+            <tr><td>Content stance</td><td>Operational. No hype.</td><td style="color:var(--muted)">Motivational. Lifestyle.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="diff-points">
+        <div class="dp">
+          <h4>Specialized in a specific segment</h4>
+          <p>The American administrative and legal remote market has its own characteristics — vocabulary, role structure, hiring process, and pay schemes. This system teaches how to enter that segment with precise positioning.</p>
+        </div>
+        <div class="dp">
+          <h4>The founder operates inside the system he teaches</h4>
+          <p>Lorenzo Amparo Ramirez has active contracts with American firms while this system exists. What he teaches is what he does — not what he did in the past or theorizes might work.</p>
+        </div>
+        <div class="dp">
+          <h4>English isn't the product — positioning is</h4>
+          <p>This system assumes you already have functional English. What it teaches is how to use that English strategically in the specific context of the American remote market: the CV, the interview, the first contact, the first contract.</p>
+        </div>
+        <div class="dp">
+          <h4>Career-oriented, not project-oriented</h4>
+          <p>Every decision in the system is designed to build a scalable remote trajectory with structural stability — not to generate a one-off income or an isolated opportunity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule">
+
+<!-- ══ RESULTADOS ════════════════════════════════════════════════════════════ -->
+<section class="resultados" id="resultados">
+  <div class="wrap">
+    <div class="section-hdr">
+      <div class="gold-rule"></div>
+      <span class="label">Documented results</span>
+      <h2 class="headline mt-1">What the system has already produced.</h2>
+      <p class="subline mt-1">Real cases with verifiable operational evidence. No exaggeration, no projections.</p>
+    </div>
+    <div class="res-grid">
+      <div class="res-card">
+        <div class="res-tipo">Positioning — Profile transformation</div>
+        <div class="res-title">From customer service to Legal Assistant — first interview in 12 days</div>
+        <p class="res-body">Dominican professional with 4 years in bilingual customer service, no prior legal experience. Correct positioning of her operational profile produced a first interview with an American firm within two weeks of applying.</p>
+        <div class="res-meta"><strong>The File client</strong> · Santo Domingo, DR · BPO profile</div>
+      </div>
+      <div class="res-card">
+        <div class="res-tipo">System replication — Active contract</div>
+        <div class="res-title">Same customer service profile. Same firm. Hired.</div>
+        <p class="res-body">Dominican, from Santo Domingo, no American legal training. Referred through Vida Remota's direct network. She was interviewed and hired by the same firm where the founder operates. Verifiable active contracts on Deel. The process works independently.</p>
+        <div class="res-meta"><strong>Lorena Frias</strong> · Santo Domingo, DR · Active contract</div>
+      </div>
+      <div class="res-card">
+        <div class="res-tipo">Operational stability — Retention and growth</div>
+        <div class="res-title">Three contract amendments in 24 months with the same client</div>
+        <p class="res-body">The most important indicator of the system isn't starting income — it's retention. Three formal amendments signed on Deel with the same client over 24 months show the professional was seen as a valuable asset within the team.</p>
+        <div class="res-meta"><strong>Lorenzo Amparo Ramirez</strong> · Medellín, Colombia · Active contracts</div>
+      </div>
+      <div class="res-card">
+        <div class="res-tipo">Interview — Second round secured</div>
+        <div class="res-title">Second interview with a Texas firm — healthcare operations profile</div>
+        <p class="res-body">Venezuelan professional with clinic administration and bilingual support experience. Positioning her operational experience took her to a second round with an American firm in a sector new to her but consistent with her real skills.</p>
+        <div class="res-meta"><strong>The File client</strong> · Caracas, Venezuela · Healthcare operations profile</div>
+      </div>
+    </div>
+
+    <div class="fundador-block">
+      <div class="fb-text">
+        <span class="label">The founder</span>
+        <h3>The system is built on real operational experience inside the American professional remote market.</h3>
+        <p>Lorenzo Amparo Ramirez is a Pre-Litigation Paralegal operating with active contracts at U.S. firms remotely from Medellín, Colombia. He has worked across three American law firms in Texas and California. The knowledge he shares is operational and current — not theoretical or retrospective.</p>
+      </div>
+      <div class="fb-stats">
+        <div class="fbs"><div class="fbs-num">3 U.S. firms</div><div class="fbs-lbl">Dallas TX · Los Angeles CA · Austin TX · all remote</div></div>
+        <div class="fbs"><div class="fbs-num">2 contracts</div><div class="fbs-lbl">simultaneously active · Deel · TX and CA</div></div>
+        <div class="fbs"><div class="fbs-num">3 amendments</div><div class="fbs-lbl">same client over 24 months</div></div>
+        <div class="fbs"><div class="fbs-num">1 replication</div><div class="fbs-lbl">documented · same BPO profile · same firm</div></div>
+      </div>
+    </div>
+
+    <p class="caption mt-4" style="text-align:center;display:block;line-height:1.65">Results correspond to each professional's specific situation. Individual outcomes depend on English level, prior experience, the employer, and personal performance. Vida Remota does not guarantee specific results.</p>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══════════════════════════════════════════════════════════════ -->
+<section class="cta">
+  <div class="cta-in">
+    <span class="label">The next step</span>
+    <h2 class="display">A serious system<br>for professionals<br>who <em>think long-term.</em></h2>
+    <p class="subline mt-2">If you have the English, the operational experience, and the long-term horizon — the only thing missing is the right positioning. That's exactly what this system builds.</p>
+    <div class="cta-btns">
+      <a href="#expediente" class="btn btn-gold" style="font-size:1rem;padding:1rem 2.75rem">Start with The File — $197</a>
+      <a href="#diagnostico" class="btn" style="color:rgba(255,255,255,.4);font-size:.875rem;text-decoration:underline;text-underline-offset:4px">Not sure yet? Start with The Diagnostic — $19</a>
+    </div>
+    <p class="cta-nota">Limited capacity · Direct review by Lorenzo · For professionals with English B2 or higher only</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <span class="foot-brand">Vida<span>Remota</span></span>
+    <div class="foot-links">
+      <a href="#diagnostico">The Diagnostic</a>
+      <a href="#productos">Global Career Kit</a>
+      <a href="#expediente">The File</a>
+      <a href="#resultados">Results</a>
+    </div>
+  </div>
+  <p class="foot-legal">Lorenzo Amparo Ramirez · Medellín, Colombia · @vidaremota · Documented results correspond to specific cases and do not constitute a guarantee of individual outcomes.</p>
+</footer>
+
+</body>
+</html>
